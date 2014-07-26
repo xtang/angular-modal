@@ -17,7 +17,6 @@ factory('btfModal', function ($animate, $compile, $rootScope, $controller, $q, $
     var template      = config.template,
         controller    = config.controller || angular.noop,
         controllerAs  = config.controllerAs,
-        container     = angular.element(config.container || document.body),
         element       = null,
         html,
         scope;
@@ -48,6 +47,7 @@ factory('btfModal', function ($animate, $compile, $rootScope, $controller, $q, $
       if (element.length === 0) {
         throw new Error('The template contains no elements; you need to wrap text nodes')
       }
+      var container = angular.element(config.container || document.body);
       $animate.enter(element, container);
       scope = $rootScope.$new();
       if (locals) {
